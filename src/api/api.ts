@@ -7,5 +7,8 @@ const instance = axios.create({
 export const newsAPI = {
     getNews() {
         return instance.get('newstories.json?print=pretty')
+    },
+    getStory(id:number) {
+        return instance.get(`item/${id}.json?print=pretty`)
     }
 }

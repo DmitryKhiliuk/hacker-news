@@ -2,9 +2,11 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import thunkMiddleware from 'redux-thunk'
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {newsReducer} from "./news-reducer";
+import {itemReducer} from "../components/Item/item-reducer";
 
 export const rootReducer = combineReducers({
-    newsReducer
+    newsReducer,
+    itemReducer
 })
 
 export const store = configureStore({

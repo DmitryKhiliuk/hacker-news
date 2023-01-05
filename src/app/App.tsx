@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {useAppDispatch} from "./store";
+import {useAppDispatch, useAppSelector} from "./store";
 import {fetchNewsTC} from "./news-reducer";
+import {selectNewsId} from "./selectors";
+import {Item} from "../components/Item/Item";
 
 function App() {
     const dispatch = useAppDispatch()
+    const newsId = useAppSelector(selectNewsId)
 
 
     useEffect(() => {
@@ -12,7 +15,12 @@ function App() {
     }, [])
     return (
         <div className="App">
+            {newsId && newsId.map((id) => (
+                <Item key={id}
+                      id={id}
 
+                />
+            ))}
         </div>
     );
 }
