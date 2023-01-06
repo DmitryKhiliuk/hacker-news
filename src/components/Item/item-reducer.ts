@@ -18,6 +18,7 @@ export type initialStateType = [{
 
 export const fetchStoryTC = createAsyncThunk('news/fetchStory', async (id: number, thunkAPI) => {
     try {
+        console.log('thunk')
         const res = await newsAPI.getStory(id)
         return res.data
     } catch (error) {

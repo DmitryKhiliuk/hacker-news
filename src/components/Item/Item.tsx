@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../../app/store";
 import {fetchStoryTC} from "./item-reducer";
 import {selectItem} from "../../app/selectors";
+import {Button, Segment} from "semantic-ui-react";
+import {NavLink, useParams} from "react-router-dom";
 
 
 
@@ -12,21 +14,18 @@ type ItemType = {
 export const Item = ({id}: ItemType) => {
 
     const dispatch = useAppDispatch()
-    const item = useAppSelector(selectItem)
+    const item = useAppSelector((state) => selectItem(state,id))
+
 
 
     useEffect(() => {
-            id && dispatch(fetchStoryTC(id))
+        dispatch(fetchStoryTC(id))
     }, [id])
 
 
-    const itemStory = item.find((story) => story.id === id)
-    console.log(itemStory)
     return (
         <div>
-            {
-                itemStory&&itemStory.title
-            }
+            <NavLink to={`/${id}`}><Segment raised>{item&&item.title}</Segment></NavLink>
         </div>
     );
 };

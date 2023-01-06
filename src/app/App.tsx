@@ -4,6 +4,9 @@ import {useAppDispatch, useAppSelector} from "./store";
 import {fetchNewsTC} from "./news-reducer";
 import {selectNewsId} from "./selectors";
 import {Item} from "../components/Item/Item";
+import {log} from "util";
+import {Route, Routes} from "react-router-dom";
+import {Story} from "../components/Story/Story";
 
 function App() {
     const dispatch = useAppDispatch()
@@ -15,12 +18,12 @@ function App() {
     }, [])
     return (
         <div className="App">
-            {newsId && newsId.map((id) => (
-                <Item key={id}
-                      id={id}
 
-                />
-            ))}
+            <Routes>
+                <Route path={'/'} element={newsId && newsId.map((id) => (<Item key={id} id={id}/>))}/>
+                <Route path={'/:id'} element={<Story/>}/>
+            </Routes>
+
         </div>
     );
 }
