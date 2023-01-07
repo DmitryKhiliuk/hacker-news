@@ -18,7 +18,6 @@ export type initialStateType = [{
 
 export const fetchStoryTC = createAsyncThunk('news/fetchStory', async (id: number, thunkAPI) => {
     try {
-        console.log('thunk')
         const res = await newsAPI.getStory(id)
         return res.data
     } catch (error) {
@@ -29,9 +28,13 @@ export const fetchStoryTC = createAsyncThunk('news/fetchStory', async (id: numbe
 const slice = createSlice({
     name: 'item',
     initialState: [{}] as initialStateType,
-    reducers: {},
+    reducers: {
+    },
     extraReducers: builder => {
         builder.addCase(fetchStoryTC.fulfilled, (state, action) => {
+            if (state.length > 100) {
+                state.pop()
+            }
             state.unshift(action.payload)
             return state
         })
@@ -39,3 +42,6 @@ const slice = createSlice({
 })
 
 export const itemReducer = slice.reducer
+export const {
+
+} = slice.actions

@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../../app/store";
-import {fetchStoryTC} from "./item-reducer";
 import {selectItem} from "../../app/selectors";
-import {Button, Segment} from "semantic-ui-react";
-import {NavLink, useParams} from "react-router-dom";
-
+import {Segment} from "semantic-ui-react";
+import {NavLink} from "react-router-dom";
+import {fetchStoryTC} from "./item-reducer";
 
 
 type ItemType = {

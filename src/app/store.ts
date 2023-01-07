@@ -3,10 +3,12 @@ import thunkMiddleware from 'redux-thunk'
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {newsReducer} from "./news-reducer";
 import {itemReducer} from "../components/Item/item-reducer";
+import {appReducer} from "./App-reducer";
 
 export const rootReducer = combineReducers({
     newsReducer,
-    itemReducer
+    itemReducer,
+    appReducer
 })
 
 export const store = configureStore({
