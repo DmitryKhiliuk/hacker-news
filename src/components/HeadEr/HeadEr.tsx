@@ -3,6 +3,7 @@ import {Button, Header, Menu, Segment} from "semantic-ui-react";
 import {useAppDispatch, useAppSelector} from "../../app/store";
 import {selectActiveItem} from "../../app/selectors";
 import {changeActiveItemAC} from "../../app/App-reducer";
+import {fetchBestNewsTC, fetchNewsTC, fetchTopNewsTC} from "../../app/news-reducer";
 
 export const HeadEr = () => {
 
@@ -20,7 +21,15 @@ export const HeadEr = () => {
     }
 
     const onClickHandler = () => {
-
+        if (activeItem==='new'){
+            dispatch(fetchNewsTC())
+        }
+        if (activeItem==='top'){
+            dispatch(fetchTopNewsTC())
+        }
+        if (activeItem==='best'){
+            dispatch(fetchBestNewsTC())
+        }
     }
 
     return (
@@ -45,7 +54,7 @@ export const HeadEr = () => {
                         onClick={getBestHandler}
                     />
                     <Menu.Menu position={'right'}>
-                        <Button onClick={onClickHandler}>refresh </Button>
+                        <Button onClick={onClickHandler}>Refresh</Button>
                     </Menu.Menu>
                 </Menu>
             </Segment>
