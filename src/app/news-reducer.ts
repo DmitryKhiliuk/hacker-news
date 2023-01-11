@@ -11,6 +11,7 @@ export const fetchNewsTC = createAsyncThunk('news/fetchNews', async () => {
 })
 export const fetchTopNewsTC = createAsyncThunk('news/fetchTopNews', async () => {
     try {
+        console.log('top')
         const res = await newsAPI.getTopNews()
         return res.data.slice(0, 100)
     } catch (error) {
@@ -19,6 +20,7 @@ export const fetchTopNewsTC = createAsyncThunk('news/fetchTopNews', async () => 
 })
 export const fetchBestNewsTC = createAsyncThunk('news/fetchBestNews', async () => {
     try {
+        console.log('best')
         const res = await newsAPI.getBestNews()
         return res.data.slice(0, 100)
     } catch (error) {
