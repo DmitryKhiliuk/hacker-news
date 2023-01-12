@@ -5,7 +5,6 @@ import {selectItem} from "../../app/selectors";
 
 export const Story = () => {
 
-
     const {id} = useParams()
     const item = useAppSelector((state) => selectItem(state, Number(id)))
 
